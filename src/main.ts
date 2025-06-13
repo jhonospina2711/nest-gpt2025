@@ -4,6 +4,9 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  
+   // Deshabilitar la verificación de certificados SSL  
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
